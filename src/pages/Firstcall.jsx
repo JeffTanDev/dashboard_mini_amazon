@@ -6,7 +6,7 @@ function Firstcall(){
     useEffect(()=>{
         const fetchdata= async()=>{
             try {
-                const res=await axios.get('http://localhost:8000/api/users');
+                const res=await axios.get('/api/users');
                 Setresult(res.data);
             } catch (err) {
                 console.log(`Error fetch data: ${err}`);
