@@ -1,0 +1,36 @@
+.footer {
+  background-color: #232f3e;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 20rem;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer li {
+  margin-bottom: 0.5rem;
+}
+
+.footerBackToTop {
+  background-color: #37475a;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footerBackToTop:hover {
+  background-color: #485769;
+}
+
+.footerBackToTopText {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
