@@ -7,7 +7,7 @@ function Carousel({ images, interval = 3000 }) {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => {
-        return prevIndex === images.length ? 0 : prevIndex + 1;
+        return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
       });
     }, interval);
     return () => clearInterval(timer);
@@ -29,11 +29,11 @@ function Carousel({ images, interval = 3000 }) {
 
   return (
     <div className="carousel">
-      <button onClick={prevImg} className="nav-button">
+      <button onClick={prevImg} className="nav-button left">
         {"<"}
       </button>
       <img src={images[currentIndex]} alt={currentIndex} />
-      <button onClick={nextImg} className="nav-button">
+      <button onClick={nextImg} className="nav-button right">
         {">"}
       </button>
     </div>

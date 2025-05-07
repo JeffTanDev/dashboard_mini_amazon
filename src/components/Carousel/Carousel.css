@@ -30,9 +30,9 @@
   background: rgba(0, 0, 0, 0.7);
 }
 
-.nav-button:first-of-type {
+.nav-button.left {
   left: 10px;
 }
-.nav-button:last-of-type {
+.nav-button.right {
   right: 10px;
 }
