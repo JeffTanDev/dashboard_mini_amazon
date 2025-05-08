@@ -7,7 +7,7 @@ function Card({ cards }) {
       <div className="card-grid">
         {cards.map((card) => {
           return (
-            <div className="card-item">
+            <div className="card-item" key={card}>
               <img src={card} alt="" className="card-image" />
               <p className="card-text">Product Name</p>
             </div>

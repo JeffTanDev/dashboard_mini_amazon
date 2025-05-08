@@ -17,14 +17,12 @@ function Carousel({ images, interval = 3000 }) {
     setCurrentIndex((prevIndex) => {
       return prevIndex === 0 ? images.length - 1 : prevIndex - 1;
     });
-    console.log(currentIndex);
   };
 
   const nextImg = () => {
     setCurrentIndex((prevIndex) => {
       return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
     });
-    console.log(currentIndex);
   };
 
   return (

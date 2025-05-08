@@ -1,21 +1,7 @@
 import { useRef } from "react";
 import "./ShowCase2.css";
 
-function ShowCase2() {
-  const products = [
-    "http://localhost:8000/images/images/card2-1.jpg",
-    "http://localhost:8000/images/images/card2-2.jpg",
-    "http://localhost:8000/images/images/card2-3.jpg",
-    "http://localhost:8000/images/images/card2-4.jpg",
-    "http://localhost:8000/images/images/card3-1.jpg",
-    "http://localhost:8000/images/images/card3-2.jpg",
-    "http://localhost:8000/images/images/card3-3.jpg",
-    "http://localhost:8000/images/images/card3-4.jpg",
-    "http://localhost:8000/images/images/card4-1.jpg",
-    "http://localhost:8000/images/images/card4-2.jpg",
-    "http://localhost:8000/images/images/card4-3.jpg",
-    "http://localhost:8000/images/images/card4-4.jpg",
-  ];
+function ShowCase2({ images }) {
   const scrollRef = useRef();
 
   const scroll = (direction) => {
@@ -35,10 +21,10 @@ function ShowCase2() {
           onClick={() => scroll("left")}
         >{`<`}</button>
         <div className="imgs-track" ref={scrollRef}>
-          {products.map((product) => {
+          {images.map((image) => {
             return (
-              <div className="imgs-item">
-                <img src={product} alt="" />
+              <div className="imgs-item" key={image}>
+                <img src={image} alt="" />
               </div>
             );
           })}
