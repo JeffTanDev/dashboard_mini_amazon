@@ -32,12 +32,12 @@
   width: 160px;
 }
 
-.nav-button {
+.showcase-nav-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: white;
+  color: black;
   border: none;
   padding: 10px;
   font-size: 24px;
@@ -45,10 +45,11 @@
   z-index: 1;
 }
 
-.nav-button.left {
-  left: 10px;
+.showcase-nav-button.left {
+  left: 0;
+  box-shadow: 6px 2px 8px rgba(0, 0, 0, 0.55);
 }
-
-.nav-button.right {
-  right: 10px;
+.showcase-nav-button.right {
+  right: 0;
+  box-shadow: -6px 2px 8px rgba(0, 0, 0, 0.55);
 }

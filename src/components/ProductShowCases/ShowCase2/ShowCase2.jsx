@@ -31,7 +31,7 @@ function ShowCase2() {
       <h2 className="showcase-title">Title</h2>
       <div className="imgs-wrapper">
         <button
-          className="nav-button left"
+          className="showcase-nav-button left"
           onClick={() => scroll("left")}
         >{`<`}</button>
         <div className="imgs-track" ref={scrollRef}>
@@ -44,7 +44,7 @@ function ShowCase2() {
           })}
         </div>
         <button
-          className="nav-button right"
+          className="showcase-nav-button right"
           onClick={() => scroll("right")}
         >{`>`}</button>
       </div>
