@@ -1,0 +1,54 @@
+.showcase-container {
+  padding: 20px;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.imgs-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.imgs-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 12px;
+  padding: 10px 0;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.imgs-item {
+  flex: 0 0 auto;
+  width: 160px;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.nav-button.left {
+  left: 10px;
+}
+
+.nav-button.right {
+  right: 10px;
+}

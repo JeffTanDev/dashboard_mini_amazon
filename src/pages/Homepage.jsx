@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import ShowCase1 from "../components/ProductShowCases/ShowCase1/ShowCase1.jsx";
+import ShowCase2 from "../components/ProductShowCases/ShowCase2/ShowCase2.jsx";
 
 function Homepage() {
   const imgs = [
@@ -15,10 +16,10 @@ function Homepage() {
       <Carousel images={imgs} />
       <ShowCase1 />
       <ShowCase1 />
-      <div>产品展示2</div>
-      <div>产品展示2</div>
+      <ShowCase2 />
+      <ShowCase2 />
       <ShowCase1 />
-      <div>产品展示2</div>
+      <ShowCase2 />
       <div>产品展示3</div>
     </>
   );
