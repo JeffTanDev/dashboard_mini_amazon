@@ -1,25 +1,23 @@
 import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function Login() {
-  const [username, SetUsername] = useState("");
+function CreateAccount() {
+  const [password, SetPassword] = useState("");
   const [errorMessage, SetErrorMessage] = useState("");
+  const { username } = useParams();
   const navigate = useNavigate();
-  const handleNameCheck = async () => {
+
+  const handleRegister = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/UserService/checkUsername",
-        { username }
+        "http://localhost:8000/UserService/register",
+        { username, password }
       );
-      const data = response.data;
-      console.log(data.message);
-      if (data.message === "exist") {
-        navigate(`/SignIn/${username}`);
-      } else {
-        navigate(`/CreateAccount/${username}`);
-      }
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+      navigate("/");
     } catch (error) {
       SetErrorMessage(error.response.data.message);
       setTimeout(() => {
@@ -27,19 +25,20 @@ function Login() {
       }, 2000);
     }
   };
+
   return (
     <>
       <div className="logo">Logo</div>
       <div className="login-container">
-        <h2>Sign in or create account</h2>
-        <h4>Enter Username</h4>
+        <h2>create account</h2>
+        <h4>Enter Password</h4>
         <input
           type="text"
-          value={username}
-          onChange={(e) => SetUsername(e.target.value)}
+          value={password}
+          onChange={(e) => SetPassword(e.target.value)}
           className="inputbox"
         />
-        <button onClick={handleNameCheck} className="btn-submit">
+        <button onClick={handleRegister} className="btn-submit">
           Continue
         </button>
         <div className="error-placeholder">
@@ -50,4 +49,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default CreateAccount;
