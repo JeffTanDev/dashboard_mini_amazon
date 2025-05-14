@@ -7,7 +7,7 @@ function Navbar() {
       <div className="nav-link">
         <a href="#">Location</a>
         <Searchbar />
-        <a href="#">Account</a>
+        <a href="/login">Account</a>
         <a href="#">Cart</a>
       </div>
     </nav>
