@@ -28,3 +28,107 @@
 .nav-link a:hover {
   color: #ffcc00;
 }
+
+.user-menu {
+  position: relative;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.username {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.hello-text {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.account-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+  min-width: 240px;
+  z-index: 1000;
+  margin-top: 1px;
+  padding: 15px 0;
+  border: 1px solid #ddd;
+}
+
+.dropdown-header {
+  padding: 0 20px 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+.signin-button {
+  width: 100%;
+  padding: 8px 0;
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border: 1px solid #a88734;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.signin-button:hover {
+  background: linear-gradient(to bottom, #f5d78e, #eeb933);
+}
+
+.dropdown-content {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.dropdown-section {
+  flex: 1;
+}
+
+.dropdown-section h4 {
+  color: #333;
+  font-size: 16px;
+  margin: 0 0 8px;
+  padding-bottom: 3px;
+}
+
+.dropdown-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-section ul li {
+  font-size: 13px;
+  color: #444;
+  padding: 3px 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.dropdown-section ul li:hover {
+  color: #f0c14b;
+  text-decoration: underline;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+}
