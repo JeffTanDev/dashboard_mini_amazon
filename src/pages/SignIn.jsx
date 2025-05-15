@@ -3,6 +3,8 @@ import "./Login.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
+const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
+
 function SignIn() {
   const { username } = useParams();
   const [password, SetPassword] = useState("");
@@ -11,7 +13,7 @@ function SignIn() {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/UserService/login",
+        `${CONTENT_SERVICE_URL}/UserService/login`,
         { username, password }
       );
       const token = response.data.token;

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
+
 function Navbar() {
   const [username, setUsername] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -13,7 +15,7 @@ function Navbar() {
     const getUsername = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/UserService/profile",
+          `${CONTENT_SERVICE_URL}/UserService/profile`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -3,6 +3,8 @@ import "./Login.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
+
 function CreateAccount() {
   const [password, SetPassword] = useState("");
   const [errorMessage, SetErrorMessage] = useState("");
@@ -12,7 +14,7 @@ function CreateAccount() {
   const handleRegister = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/UserService/register",
+        `${CONTENT_SERVICE_URL}/UserService/register`,
         { username, password }
       );
       const token = response.data.token;

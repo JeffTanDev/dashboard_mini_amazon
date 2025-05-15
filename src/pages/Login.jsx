@@ -3,6 +3,8 @@ import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
+
 function Login() {
   const [username, SetUsername] = useState("");
   const [errorMessage, SetErrorMessage] = useState("");
@@ -10,7 +12,7 @@ function Login() {
   const handleNameCheck = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/UserService/checkUsername",
+        `${CONTENT_SERVICE_URL}/UserService/checkUsername`,
         { username }
       );
       const data = response.data;
