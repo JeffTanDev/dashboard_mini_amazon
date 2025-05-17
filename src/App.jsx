@@ -4,6 +4,7 @@ import MainLayout from "./Layouts/MainLayout";
 import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";
 import CreateAccount from "./pages/createAccount";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
+          <Route path="/:product" element={<ProductPage />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/SignIn/:username" element={<SignIn />} />

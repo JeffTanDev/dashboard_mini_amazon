@@ -38,7 +38,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">Logo</div>
+      <div className="nav-logo">Logo</div>
       <div className="nav-link">
         <a href="#">Location</a>
         <Searchbar />

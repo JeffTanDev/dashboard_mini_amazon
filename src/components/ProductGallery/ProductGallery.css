@@ -1,0 +1,42 @@
+.product-gallery-vertical {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.thumbnail-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.thumbnail-vertical {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border 0.3s ease;
+}
+
+.thumbnail-vertical:hover {
+  border: 2px solid #007185;
+}
+
+.thumbnail-vertical.active {
+  border: 2px solid #f08804;
+}
+
+.main-image-container-vertical {
+  max-width: 400px;
+  padding: 10px;
+  background-color: white;
+}
+
+.main-image-vertical {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

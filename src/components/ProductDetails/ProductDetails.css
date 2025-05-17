@@ -1,0 +1,34 @@
+.product-detail {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.product-rating {
+  margin: 10px 0;
+  color: #f0c14b;
+}
+
+.product-price {
+  font-size: 22px;
+  color: #b12704;
+  margin: 10px 0;
+}
+
+.product-features {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.product-variants label {
+  display: block;
+  margin: 10px 0;
+}
+
+.product-description {
+  margin-top: 20px;
+}
