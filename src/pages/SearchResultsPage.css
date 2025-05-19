@@ -1,0 +1,30 @@
+.search-results-page {
+  padding: 20px;
+  background-color: #f3f3f3;
+  min-height: 100vh;
+}
+
+.search-header {
+  margin-bottom: 20px;
+}
+
+.search-header h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.search-header p {
+  color: #565959;
+}
+
+.search-content {
+  display: flex;
+  gap: 20px;
+}
+
+.products-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
