@@ -3,65 +3,17 @@ import { useParams } from "react-router-dom";
 import FilterSidebar from "../components/FilterSidebar/FilterSidebar";
 import ProductCard from "../components/ProductCard/ProductCard";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
+const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
 function SearchResultsPage() {
   const { product } = useParams();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [maxPrice, setMaxPrice] = useState(10000);
-
-  const mockProducts = [
-    {
-      id: 1,
-      title: "2024 new laptop 15.6 inches",
-      price: 4999,
-      rating: 4,
-      image: "https://via.placeholder.com/200",
-      reviews: 128,
-      delivery: {
-        freeDelivery: true,
-        nextDayDelivery: true,
-      },
-    },
-    {
-      id: 2,
-      title: "wireless bluetooth headphones active noise cancellation",
-      price: 899,
-      rating: 5,
-      image: "https://via.placeholder.com/200",
-      reviews: 256,
-      delivery: {
-        freeDelivery: true,
-        nextDayDelivery: false,
-      },
-    },
-    {
-      id: 3,
-      title: "smart watch sports health monitoring",
-      price: 1299,
-      rating: 4,
-      image: "https://via.placeholder.com/200",
-      reviews: 89,
-      delivery: {
-        freeDelivery: false,
-        nextDayDelivery: true,
-      },
-    },
-    {
-      id: 4,
-      title: "mechanical keyboard rgb backlit",
-      price: 399,
-      rating: 3,
-      image: "https://via.placeholder.com/200",
-      reviews: 45,
-      delivery: {
-        freeDelivery: true,
-        nextDayDelivery: false,
-      },
-    },
-  ];
+  const [productList, setProductList] = useState([]);
 
   const handleFilterChange = (filters) => {
-    const filtered = mockProducts.filter((product) => {
+    const filtered = productList.filter((product) => {
       const priceInRange =
         product.price >= filters.priceRange.min &&
         product.price <= filters.priceRange.max;
@@ -80,10 +32,17 @@ function SearchResultsPage() {
   };
 
   useEffect(() => {
-    const prices = mockProducts.map((product) => product.price);
-    setMaxPrice(Math.max(...prices));
-    setFilteredProducts(mockProducts);
-  }, []);
+    const getProduct = async () => {
+      const response = await axios.get(
+        `${CONTENT_SERVICE_URL}/ProductService/search?q=${product}`
+      );
+      setProductList(response.data);
+      const prices = response.data.map((product) => product.price);
+      setMaxPrice(Math.max(...prices));
+      setFilteredProducts(response.data);
+    };
+    getProduct();
+  }, [product]);
 
   return (
     <div className="search-results-page">

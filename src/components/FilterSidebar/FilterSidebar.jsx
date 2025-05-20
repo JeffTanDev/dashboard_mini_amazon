@@ -92,7 +92,7 @@ function FilterSidebar({ onFilterChange, maxPrice }) {
             onChange={handlePriceChange}
             renderTrack={({ props, children }) => (
               <div
-                {...props}
+                key="track"
                 className="range-track"
                 style={{
                   ...props.style,
@@ -100,23 +100,28 @@ function FilterSidebar({ onFilterChange, maxPrice }) {
                   width: "100%",
                   backgroundColor: "#ddd",
                 }}
+                {...props}
               >
                 {children}
               </div>
             )}
-            renderThumb={({ props }) => (
-              <div
-                {...props}
-                className="range-thumb"
-                style={{
-                  ...props.style,
-                  height: "20px",
-                  width: "20px",
-                  backgroundColor: "#0066c0",
-                  borderRadius: "50%",
-                }}
-              />
-            )}
+            renderThumb={({ props, index }) => {
+              const { key, ...otherProps } = props;
+              return (
+                <div
+                  key={`thumb-${index}`}
+                  className="range-thumb"
+                  style={{
+                    ...otherProps.style,
+                    height: "20px",
+                    width: "20px",
+                    backgroundColor: "#0066c0",
+                    borderRadius: "50%",
+                  }}
+                  {...otherProps}
+                />
+              );
+            }}
           />
           <div className="price-inputs">
             <input

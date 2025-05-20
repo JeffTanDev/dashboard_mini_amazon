@@ -1,29 +1,50 @@
+import { useEffect, useState } from "react";
 import "./ProductCard.css";
 
 function ProductCard({ product }) {
-  const { title, price, rating, image, reviews } = product;
+  const [productData, setProductData] = useState({
+    title: "",
+    price: 0,
+    rating: 0,
+    image: "https://via.placeholder.com/200",
+    reviews: 0,
+  });
+  useEffect(() => {
+    setProductData({
+      title: product.title,
+      price: product.price,
+      rating: product.rating,
+      image: product.image,
+      reviews: product.reviews,
+    });
+  }, [product]);
 
   return (
     <div className="product-card">
       <div className="product-image">
-        <img src={image} alt={title} />
+        <img src={productData.image} alt={productData.title} />
       </div>
       <div className="product-info">
-        <h3 className="product-title">{title}</h3>
+        <h3 className="product-title">{productData.title}</h3>
         <div className="product-rating">
           {[...Array(5)].map((_, index) => (
-            <span key={index} className={index < rating ? "star filled" : "star"}>
+            <span
+              key={index}
+              className={index < productData.rating ? "star filled" : "star"}
+            >
               ★
             </span>
           ))}
-          <span className="reviews-count">({reviews} reviews)</span>
+          <span className="reviews-count">({productData.reviews} reviews)</span>
         </div>
         <div className="product-price">
-          <span className="price">${price}</span>
+          <span className="price">${productData.price}</span>
           <span className="prime-badge">Prime</span>
         </div>
         <div className="delivery-info">
-          <span className="delivery-date">estimated delivery date: 3-5 days</span>
+          <span className="delivery-date">
+            estimated delivery date: 3-5 days
+          </span>
           <span className="free-delivery">free delivery</span>
         </div>
       </div>
@@ -31,4 +52,4 @@ function ProductCard({ product }) {
   );
 }
 
-export default ProductCard; 
+export default ProductCard;
