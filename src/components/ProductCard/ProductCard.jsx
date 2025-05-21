@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./ProductCard.css";
+
+const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
 
 function ProductCard({ product }) {
   const [productData, setProductData] = useState({
@@ -10,6 +13,20 @@ function ProductCard({ product }) {
     image: "https://via.placeholder.com/200",
     reviews: 0,
   });
+
+  useEffect(() => {
+    const getMainImg = async () => {
+      const res = await axios.get(
+        `${CONTENT_SERVICE_URL}/ProductService/images/${product.id}`
+      );
+      const mainImgUrl = `${CONTENT_SERVICE_URL}/ProductService/` + res.data[0];
+      setProductData((prevProductData) => ({
+        ...prevProductData,
+        image: mainImgUrl,
+      }));
+    };
+    getMainImg();
+  }, [product]);
   const navigate = useNavigate();
 
   const handleClick = (e) => {
