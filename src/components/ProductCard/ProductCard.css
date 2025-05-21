@@ -11,6 +11,10 @@
   margin-right: 20px;
 }
 
+.product-image:hover {
+  cursor: pointer;
+}
+
 .product-image img {
   width: 100%;
   height: 100%;
@@ -25,6 +29,10 @@
   font-size: 18px;
   color: #0066c0;
   margin-bottom: 10px;
+}
+
+.product-title {
+  cursor: pointer;
 }
 
 .product-rating {
@@ -76,4 +84,4 @@
 
 .free-delivery {
   color: #0066c0;
-} 
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 
 function ProductCard({ product }) {
@@ -9,6 +10,13 @@ function ProductCard({ product }) {
     image: "https://via.placeholder.com/200",
     reviews: 0,
   });
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    navigate(`/${product.id}`);
+  };
+
   useEffect(() => {
     setProductData({
       title: product.title,
@@ -22,10 +30,16 @@ function ProductCard({ product }) {
   return (
     <div className="product-card">
       <div className="product-image">
-        <img src={productData.image} alt={productData.title} />
+        <img
+          src={productData.image}
+          alt={productData.title}
+          onClick={handleClick}
+        />
       </div>
       <div className="product-info">
-        <h3 className="product-title">{productData.title}</h3>
+        <h3 className="product-title" onClick={handleClick}>
+          {productData.title}
+        </h3>
         <div className="product-rating">
           {[...Array(5)].map((_, index) => (
             <span

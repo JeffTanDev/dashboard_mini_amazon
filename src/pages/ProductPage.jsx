@@ -3,45 +3,42 @@ import ProductDetails from "../components/ProductDetails/ProductDetails.jsx";
 import ProductGallery from "../components/ProductGallery/ProductGallery.jsx";
 import PurchaseBox from "../components/PurchaseBox/PurchaseBox.jsx";
 import "./ProductPage.css";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
-const mockProduct = {
-  title: "Wireless Bluetooth Headphones",
-  rating: 4,
-  ratingCount: 1234,
-  price: 99.99,
-  features: [
-    "High quality stereo sound",
-    "20 hours battery life",
-    "Comfortable ear cushions",
-  ],
-  colors: ["Black", "Blue", "White"],
-  sizes: ["Small", "Medium", "Large"],
-  description:
-    "These wireless headphones are perfect for travel, work, and gaming.",
-};
 
 function ProductPage() {
+  const { productID } = useParams();
   const [mockImages, setMockImages] = useState([]);
+  const [productInfo, setProductInfo] = useState();
   useEffect(() => {
     const getCarouselImgs = async () => {
       const res = await fetch(
-        `${CONTENT_SERVICE_URL}/ContentService/images/CarouselImgs`
+        `${CONTENT_SERVICE_URL}/ProductService/images/${productID}`
       );
       const data = await res.json();
       const fullURL = data.map((url) => {
-        return `${CONTENT_SERVICE_URL}/ContentService/${url}`;
+        return `${CONTENT_SERVICE_URL}/ProductService/${url}`;
       });
       setMockImages(fullURL);
     };
+    const getProductInfo = async () => {
+      const res = await axios.get(
+        `${CONTENT_SERVICE_URL}/ProductService/getProduct/${productID}`
+      );
+      setProductInfo(res.data);
+    };
+    getProductInfo();
+
     getCarouselImgs();
-  }, []);
+  }, [productID]);
 
   return (
     <div className="product-page">
       <ProductGallery images={mockImages} />
-      <ProductDetails product={mockProduct} />
-      <PurchaseBox product={mockProduct} />
+      <ProductDetails productInfo={productInfo} />
+      <PurchaseBox productInfo={productInfo} />
     </div>
   );
 }

@@ -1,9 +1,28 @@
 import { useState } from "react";
 import "./ProductDetails.css";
+import { useEffect } from "react";
 
-function ProductDetails({ product }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+function ProductDetails({ productInfo }) {
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedSize, setSelectedSize] = useState("");
+  const [product, setProduct] = useState({
+    title: "",
+    rating: 0,
+    ratingCount: 0,
+    price: 0,
+    features: [""],
+    colors: [""],
+    sizes: [""],
+    description: "",
+  });
+  useEffect(() => {
+    if (productInfo) {
+      setProduct(productInfo);
+      setSelectedColor(productInfo.colors[0]);
+      setSelectedSize(productInfo.sizes[0]);
+    }
+  }, [productInfo]);
+
   return (
     <div className="product-detail">
       <h1 className="product-title">{product.title}</h1>

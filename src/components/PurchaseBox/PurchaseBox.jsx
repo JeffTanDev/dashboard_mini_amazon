@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./PurchaseBox.css";
 
-function PurchaseBox({ product }) {
+function PurchaseBox({ productInfo }) {
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState({
+    title: "",
+    rating: 0,
+    ratingCount: 0,
+    price: 0,
+    features: [""],
+    colors: [""],
+    sizes: [""],
+    description: "",
+  });
+  useEffect(() => {
+    if (productInfo) {
+      setProduct(productInfo);
+    }
+  }, [productInfo]);
   return (
     <div className="purchase-box">
       <h3 className="product-price">${product.price}</h3>
