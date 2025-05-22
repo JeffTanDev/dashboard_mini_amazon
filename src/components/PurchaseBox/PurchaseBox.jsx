@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./PurchaseBox.css";
+import { addProduct } from "../../Redux/cartSlice.js";
+import { useDispatch } from "react-redux";
 
 function PurchaseBox({ productInfo }) {
   const [quantity, setQuantity] = useState(1);
@@ -13,11 +15,17 @@ function PurchaseBox({ productInfo }) {
     sizes: [""],
     description: "",
   });
+  const dispatch = useDispatch();
   useEffect(() => {
     if (productInfo) {
       setProduct(productInfo);
     }
   }, [productInfo]);
+
+  const handleAddToCart = () => {
+    dispatch(addProduct(product));
+  };
+
   return (
     <div className="purchase-box">
       <h3 className="product-price">${product.price}</h3>
@@ -38,7 +46,9 @@ function PurchaseBox({ productInfo }) {
           </select>
         </label>
       </div>
-      <button className="add-to-cart">Add to Cart</button>
+      <button className="add-to-cart" onClick={handleAddToCart}>
+        Add to Cart
+      </button>
       <button className="buy-now">Buy Now</button>
     </div>
   );
