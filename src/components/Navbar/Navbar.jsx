@@ -91,7 +91,7 @@ function Navbar() {
         ) : (
           <a href="/login">Account</a>
         )}
-        <a href="#">Cart</a>
+        <a href="/cart">Cart</a>
       </div>
     </nav>
   );

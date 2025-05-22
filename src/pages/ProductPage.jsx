@@ -22,6 +22,10 @@ function ProductPage() {
         return `${CONTENT_SERVICE_URL}/ProductService/${url}`;
       });
       setMockImages(fullURL);
+      setProductInfo((prevInfo) => ({
+        ...prevInfo,
+        image: fullURL[0],
+      }));
     };
     const getProductInfo = async () => {
       const res = await axios.get(

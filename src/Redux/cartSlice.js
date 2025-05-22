@@ -5,18 +5,7 @@ const getInitialState = () => {
   return savedCart
     ? JSON.parse(savedCart)
     : {
-        cartProduct: [
-          {
-            id: 1,
-            title: "2024 new laptop 15.6 inches",
-            price: 4999,
-          },
-          {
-            id: 2,
-            title: "wireless bluetooth headphones active noise cancellation",
-            price: 899,
-          },
-        ],
+        cartProduct: [],
       };
 };
 
@@ -25,12 +14,41 @@ const cartReducer = createSlice({
   initialState: getInitialState(),
   reducers: {
     addProduct: (state, action) => {
-      state.cartProduct = [...state.cartProduct, action.payload];
+      const existProduct = state.cartProduct.find((product) => {
+        return product.id === action.payload;
+      });
+      if (existProduct) {
+        existProduct.quantity += 1;
+      } else {
+        const newProduct = {
+          ...action.payload,
+          quantity: 1,
+        };
+        state.cartProduct = [...state.cartProduct, newProduct];
+      }
       localStorage.setItem("cart", JSON.stringify(state));
     },
-    deleteProduct: (state, action) => {},
+    minusProduct: (state, action) => {
+      const existProduct = state.cartProduct.find((product) => {
+        return product.id === action.payload;
+      });
+      if (existProduct.quantity > 1) {
+        existProduct.quantity -= 1;
+      } else {
+        state.cartProduct = state.cartProduct.filter(
+          (p) => p.id !== existProduct.id
+        );
+      }
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
+    deleteProduct: (state, action) => {
+      state.cartProduct = state.cartProduct.filter(
+        (p) => p.id !== action.payload
+      );
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
   },
 });
 
-export const { addProduct, deleteProduct } = cartReducer.actions;
+export const { addProduct, minusProduct, deleteProduct } = cartReducer.actions;
 export default cartReducer.reducer;
