@@ -38,7 +38,9 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="nav-logo">Logo</div>
+      <div className="nav-logo" onClick={() => navigate("/")}>
+        Logo
+      </div>
       <div className="nav-link">
         <a href="#">Location</a>
         <Searchbar />

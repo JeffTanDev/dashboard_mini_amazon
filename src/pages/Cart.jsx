@@ -1,8 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct, minusProduct, deleteProduct } from "../Redux/cartSlice.js";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 
 function Cart() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartProduct = useSelector((state) => state.cart.cartProduct);
 
@@ -10,8 +12,8 @@ function Cart() {
     dispatch(deleteProduct(PID));
   };
 
-  const handleAddone = (PID) => {
-    dispatch(addProduct(PID));
+  const handleAddone = (product) => {
+    dispatch(addProduct(product));
   };
 
   const handleMinusOne = (PID) => {
@@ -29,7 +31,10 @@ function Cart() {
         <div className="cart-items">
           {cartProduct.map((product) => (
             <div key={product.id} className="cart-item">
-              <div className="item-image">
+              <div
+                className="item-image"
+                onClick={() => navigate(`/${product.id}`)}
+              >
                 <img
                   src={product.image || "https://via.placeholder.com/150"}
                   alt={product.title}
@@ -37,7 +42,12 @@ function Cart() {
               </div>
 
               <div className="item-details">
-                <h2 className="item-title">{product.title}</h2>
+                <h2
+                  className="item-title"
+                  onClick={() => navigate(`/${product.id}`)}
+                >
+                  {product.title}
+                </h2>
                 <div className="item-availability">In Stock</div>
                 <div className="item-actions">
                   <div className="quantity-control">
@@ -50,7 +60,7 @@ function Cart() {
                     <span className="quantity-number">{product.quantity}</span>
                     <button
                       className="quantity-btn"
-                      onClick={() => handleAddone(product.id)}
+                      onClick={() => handleAddone(product)}
                     >
                       +
                     </button>
@@ -77,9 +87,17 @@ function Cart() {
 
         <div className="cart-summary">
           <div className="subtotal">
-            <span>Subtotal ({cartProduct.length} items):</span>
+            <span>
+              Subtotal (
+              {cartProduct.reduce((sum, item) => sum + item.quantity, 0)}{" "}
+              items):
+            </span>
             <span className="subtotal-price">
-              ${cartProduct.reduce((sum, item) => sum + item.price, 0)}
+              $
+              {cartProduct.reduce(
+                (sum, item) => sum + item.price * item.quantity,
+                0
+              )}
             </span>
           </div>
           <button className="checkout-button">Checkout</button>
@@ -90,9 +108,17 @@ function Cart() {
         <div className="order-summary">
           <h2>Order Summary</h2>
           <div className="summary-row">
-            <span>Subtotal ({cartProduct.length} items):</span>
             <span>
-              ${cartProduct.reduce((sum, item) => sum + item.price, 0)}
+              Subtotal (
+              {cartProduct.reduce((sum, item) => sum + item.quantity, 0)}{" "}
+              items):
+            </span>
+            <span>
+              $
+              {cartProduct.reduce(
+                (sum, item) => sum + item.price * item.quantity,
+                0
+              )}
             </span>
           </div>
           <div className="summary-row">
@@ -102,7 +128,11 @@ function Cart() {
           <div className="summary-row total">
             <span>Total</span>
             <span>
-              ${cartProduct.reduce((sum, item) => sum + item.price, 0)}
+              $
+              {cartProduct.reduce(
+                (sum, item) => sum + item.price * item.quantity,
+                0
+              )}
             </span>
           </div>
           <button className="checkout-button">Checkout</button>

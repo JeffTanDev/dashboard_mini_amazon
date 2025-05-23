@@ -47,6 +47,10 @@
   object-fit: contain;
 }
 
+.item-image:hover {
+  cursor: pointer;
+}
+
 .item-details {
   flex: 1;
 }
@@ -55,6 +59,10 @@
   font-size: 18px;
   margin: 0 0 10px 0;
   color: #007185;
+}
+
+.item-title:hover {
+  cursor: pointer;
 }
 
 .item-availability {

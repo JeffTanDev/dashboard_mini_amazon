@@ -11,6 +11,10 @@
   font-weight: bold;
 }
 
+.nav-logo:hover {
+  cursor: pointer;
+}
+
 .nav-link {
   display: flex;
   list-style: none;
