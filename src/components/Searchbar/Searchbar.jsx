@@ -1,15 +1,24 @@
 import { useState } from "react";
 import "./Searchbar.css";
 import { useNavigate } from "react-router-dom";
+
 function Searchbar() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  const handleClick = (e) => {
+
+  const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim()) {
       navigate(`/search/${query.trim()}`);
     }
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch(e);
+    }
+  };
+
   return (
     <div className="searchbar">
       <input
@@ -17,8 +26,9 @@ function Searchbar() {
         placeholder="Search Mini Amazon"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
-      <button className="search-btn" onClick={handleClick}>
+      <button className="search-btn" onClick={handleSearch}>
         Search
       </button>
     </div>
