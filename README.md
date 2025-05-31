@@ -1,12 +1,118 @@
-# React + Vite
+# Amazon Dashboard Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Amazon dashboard project built with React and Vite, providing a sleek user interface and smooth user experience.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19
+- Vite 6
+- Redux Toolkit
+- React Router DOM
+- Axios
+- ESLint
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Responsive Design
+- State Management
+- Routing System
+- API Integration
+- Data Visualization
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone [repository-url]
+cd dashboard_mini_amazon
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Configure environment variables
+```bash
+cp .env.example .env
+```
+Then edit the `.env` file with your necessary environment variables.
+
+### Development
+
+Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+### Build
+
+Build for production:
+```bash
+npm run build
+# or
+yarn build
+```
+
+Build for development:
+```bash
+npm run build:dev
+# or
+yarn build:dev
+```
+
+### Preview Build
+
+```bash
+npm run preview
+# or
+yarn preview
+```
+
+## Project Structure
+
+```
+dashboard_mini_amazon/
+├── src/              # Source code
+├── public/           # Static assets
+├── dist/             # Build output
+├── vite.config.js    # Vite configuration
+└── package.json      # Project dependencies and scripts
+```
+
+## Code Style
+
+The project uses ESLint for code style checking:
+
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+## Contributing
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+[MIT License](LICENSE)
+
+## Contact
+
+For questions or suggestions, please open an Issue or Pull Request.
