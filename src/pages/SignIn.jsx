@@ -2,8 +2,7 @@ import { useState } from "react";
 import "./Login.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-
-const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
+import { CONTENT_SERVICE_URL } from "../config.js";
 
 function SignIn() {
   const { username } = useParams();

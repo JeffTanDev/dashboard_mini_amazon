@@ -5,8 +5,7 @@ import PurchaseBox from "../components/PurchaseBox/PurchaseBox.jsx";
 import "./ProductPage.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
-const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
+import { CONTENT_SERVICE_URL } from "../config.js";
 
 function ProductPage() {
   const { productID } = useParams();

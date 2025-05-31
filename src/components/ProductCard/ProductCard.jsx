@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./ProductCard.css";
-
-const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
+import { CONTENT_SERVICE_URL } from "../../config";
 
 function ProductCard({ product }) {
   const [productData, setProductData] = useState({

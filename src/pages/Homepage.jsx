@@ -3,8 +3,8 @@ import Carousel from "../components/Carousel/Carousel";
 import ShowCase1 from "../components/ProductShowCases/ShowCase1/ShowCase1.jsx";
 import ShowCase2 from "../components/ProductShowCases/ShowCase2/ShowCase2.jsx";
 import { useEffect, useState } from "react";
+import { CONTENT_SERVICE_URL } from "../config.js";
 
-const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
 
 function Homepage() {
   const [CarouselImgs, SetCarouselImgs] = useState([]);

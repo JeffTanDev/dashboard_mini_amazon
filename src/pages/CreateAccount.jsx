@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { CONTENT_SERVICE_URL } from "../config.js";
 
-const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
 
 function CreateAccount() {
   const [password, SetPassword] = useState("");

@@ -3,8 +3,8 @@ import Searchbar from "../Searchbar/Searchbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { CONTENT_SERVICE_URL } from "../../config";
 
-const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
 
 function Navbar() {
   const [username, setUsername] = useState("");

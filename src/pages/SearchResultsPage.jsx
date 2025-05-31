@@ -4,8 +4,8 @@ import FilterSidebar from "../components/FilterSidebar/FilterSidebar";
 import ProductCard from "../components/ProductCard/ProductCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { CONTENT_SERVICE_URL } from "../config.js";
 
-const CONTENT_SERVICE_URL = import.meta.env.VITE_CONTENT_SERVICE_URL;
 function SearchResultsPage() {
   const { product } = useParams();
   const [filteredProducts, setFilteredProducts] = useState([]);
